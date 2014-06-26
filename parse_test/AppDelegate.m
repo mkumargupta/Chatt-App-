@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import <Parse/Parse.h>
+#import "screen1.h"
 
 @implementation AppDelegate
 
@@ -18,6 +21,14 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    [Parse setApplicationId:@"sXJW3aQldPAWDhXZm2ejMx4In8sz5Sr3iasZAsZh"
+                  clientKey:@"Sh1koGG7isPxsKa3gm8MQLN5EF32BxRGOtnEBVIk"];
+    PFACL *defaultACL = [PFACL ACL];
+    // If you would like all objects to be private by default, remove this line.
+    [defaultACL setPublicReadAccess:YES];
+    [PFACL setDefaultACL:defaultACL withAccessForCurrentUser:YES];
+    LoginViewController *obj=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+    [self.window setRootViewController:obj];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
